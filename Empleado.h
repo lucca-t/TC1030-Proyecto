@@ -20,7 +20,7 @@ public:
     Empleado(): id(0), nombre(""){}
 
 
-    //modificadores de acceso
+//modificadores de acceso
     int getID(){    //no se cambia porque solo es su id y no se cambia
         return id;
     }
@@ -43,7 +43,7 @@ public:
 
     virtual void trabajar() = 0;
 
-    virtual string mostrarInfo() = 0;
+    virtual void mostrarInfo() = 0;
 
     virtual string obtenerRol() = 0;
 
