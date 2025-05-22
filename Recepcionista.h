@@ -34,16 +34,16 @@ public:
     }
     
     void mostrarInfo() override{   
-        cout << "Soy un(a) "<< this->obtenerRol() << " con " << llamadasAtendidas << " llamadas atendidas y " << reservacionesHechas << " reservaciones agendadas" << endl;
+        cout << "Soy un(a) "<< this->obtenerRol() << ", me llamo " << this->nombre <<  " con " << llamadasAtendidas << " llamadas atendidas y " << reservacionesHechas << " reservaciones agendadas." << endl;
     }
 
-    void trabajar(){
+    void trabajar()  override{
             cout << "Reservo una recamara" << endl;
             llamadasAtendidas++;
             reservacionesHechas++;
     }  
 
-    string obtenerRol(){
+    string obtenerRol()  override{
         return "Recepionista";
     }
 

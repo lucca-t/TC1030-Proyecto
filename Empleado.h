@@ -29,6 +29,14 @@ public:
         return nombre;
     }
 
+    string getTurno(){
+        return turno;
+    }
+    
+    double getSalario(){
+        return salario;
+    }
+
     void setNombre(string nombre){  // tal vez se cambian el nombre
         this -> nombre = nombre;
     }
@@ -37,9 +45,10 @@ public:
         this -> turno = turno;
     }
     
-    string getTurno(){
-        return turno;
+    void setSalario(double salario){
+        this -> salario = salario;
     }
+
 
     virtual void trabajar() = 0;
 
