@@ -22,11 +22,13 @@ public:
     int getSuministros(){
         return suministros;
     }
-    void repoblarSuministros(){
+
+    void reponerSuministros(){
+        cout << "Suministros repuestos" << endl;
         suministros = 10;
     }
+
     void trabajar() override{
-        
         if(suministros == 0){
             cout << "Suministros agotados, repoblar suministros por favor." << endl;
         }else{
@@ -35,11 +37,14 @@ public:
         cout << "Cuarto limpiado" << endl;
         }
     }
+
     string obtenerRol() override{
         return "Limpieza";
     }
+
     void mostrarInfo() override{
-        cout << "Soy "<< this->obtenerRol() << ", me llamo " << this->nombre <<   " con " << suministros << " suministros y " << cuartosLimpiados << " cuartos limpiados." << endl;
+        cout << "Soy "<< this->obtenerRol() << ", me llamo " << this->nombre <<   " con " << suministros 
+        << " suministros y " << cuartosLimpiados << " cuartos limpiados." << endl;
     }
 
 

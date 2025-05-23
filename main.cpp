@@ -16,16 +16,22 @@ int main(){
     Lucca.addLlamada();
 
     Lucca.mostrarInfo();
+    
     cout << "-------------" << endl;
-
     Limpieza Oscar = Limpieza(123, "Oscar");
     Oscar.mostrarInfo();
     cout << "-------------" << endl;
-    for(int i = 0; i < 11; i++){Oscar.trabajar();}
+
+    for(int i = 0; i < 11; i++){
+        Oscar.trabajar();
+    }
+
+    cout << "-------------" << endl;
     Oscar.mostrarInfo();
-    Oscar.repoblarSuministros();
+    Oscar.reponerSuministros();
     Oscar.trabajar();
 
+    cout << "-------------" << endl;
     Oscar.mostrarInfo();
     return 0;
 }

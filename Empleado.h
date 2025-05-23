@@ -37,7 +37,7 @@ public:
         return salario;
     }
 
-    void setNombre(string nombre){  // tal vez se cambian el nombre
+    void setNombre(string nombre){  
         this -> nombre = nombre;
     }
 
