@@ -12,10 +12,8 @@ private:
 
 public:
 //constructor
-    Recepcionista(int id, string nombre): Empleado(id, nombre){
-        this -> llamadasAtendidas = 0;
-        this -> reservacionesHechas = 0;
-    }
+    Recepcionista(int id, string nombre): llamadasAtendidas(0), reservacionesHechas(0), Empleado(id, nombre){}
+    
 //modificadores de acceso
     int getLlamadas(){
         return llamadasAtendidas;
