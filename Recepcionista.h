@@ -12,18 +12,12 @@ private:
 
 public:
 //constructor
-    Recepcionista(int id, string nombre): Empleado(id, nombre){
-        this -> llamadasAtendidas = 0;
-        this -> reservacionesHechas = 0;
-    }
-//modificadores de acceso
-    int getLlamadas(){
-        return llamadasAtendidas;
-    }
+    Recepcionista(int id, string nombre): llamadasAtendidas(0), reservacionesHechas(0), Empleado(id, nombre){}
     
-    int getReservaciones(){
-        return reservacionesHechas;
-    }
+//modificadores de acceso
+    int getLlamadas(){return llamadasAtendidas;}
+    
+    int getReservaciones(){return reservacionesHechas;}
 
     void addLlamada(){
         llamadasAtendidas++;
@@ -33,17 +27,17 @@ public:
         reservacionesHechas++;
     }
     
-    void mostrarInfo() override{   
+    void mostrarInfo(){   
         cout << "Soy un(a) "<< this->obtenerRol() << ", me llamo " << this->nombre <<  " con " << llamadasAtendidas << " llamadas atendidas y " << reservacionesHechas << " reservaciones agendadas." << endl;
     }
 
-    void trabajar()  override{
+    void trabajar(){
             cout << "Reservo una recamara" << endl;
             llamadasAtendidas++;
             reservacionesHechas++;
     }  
 
-    string obtenerRol()  override{
+    string obtenerRol(){
         return "Recepionista";
     }
 
