@@ -17,7 +17,7 @@ private:
     //tamaño de los arreglos, y los arreglos de apuntadores para todo
     Cuarto* cuartos[MAX];      
     Empleado* empleados[MAX];  
-    Huesped* huespedes[MAX];   
+    Huesped* huespedes[MAX];  
 
 public:
     Hotel()
