@@ -15,9 +15,7 @@ public:
         this -> suministros = 10;
     }
 
-    int getNumLimpiados(){
-        return cuartosLimpiados;
-    }
+    int getNumLimpiados(){return cuartosLimpiados;}
 
     int getSuministros(){
         return suministros;
@@ -28,7 +26,7 @@ public:
         suministros = 10;
     }
 
-    void trabajar() override{
+    void trabajar() {
         if(suministros == 0){
             cout << "Suministros agotados, repoblar suministros por favor." << endl;
         }else{
@@ -38,11 +36,11 @@ public:
         }
     }
 
-    string obtenerRol() override{
+    string obtenerRol() {
         return "Limpieza";
     }
 
-    void mostrarInfo() override{
+    void mostrarInfo() {
         cout << "Soy "<< this->obtenerRol() << ", me llamo " << this->nombre <<   " con " << suministros 
         << " suministros y " << cuartosLimpiados << " cuartos limpiados." << endl;
     }

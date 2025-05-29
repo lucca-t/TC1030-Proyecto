@@ -15,9 +15,9 @@ private:
     int numCuartos;
     int numEmpleados;
     int numHuespedes;
-    Cuarto** cuartos;      
-    Empleado** empleados;  
-    Huesped** huespedes;   
+    Cuarto* cuartos;      
+    Empleado* empleados;  
+    Huesped* huespedes;   
 
 public:
     Hotel()
@@ -38,9 +38,9 @@ public:
         cuartos = new Cuarto*[numCuartos];
         empleados = new Empleado*[numEmpleados];
         huespedes = new Huesped*[numHuespedes];
-        for (int i = 0; i < numCuartos; ++i) cuartos[i] = nullptr;
-        for (int i = 0; i < numEmpleados; ++i) empleados[i] = nullptr;
-        for (int i = 0; i < numHuespedes; ++i) huespedes[i] = nullptr;
+        for (int i = 0; i < numCuartos; i++) cuartos[i] = nullptr;
+        for (int i = 0; i < numEmpleados; i++) empleados[i] = nullptr;
+        for (int i = 0; i < numHuespedes; i++) huespedes[i] = nullptr;
     }
 
     void alquilarCuarto(Huesped* huesped, int numeroCuarto){
