@@ -26,25 +26,25 @@ public:
         for (int i = 0; i < MAX; i++) cuartos[i] = nullptr;
         for (int i = 0; i < MAX; i++) empleados[i] = nullptr;
         for (int i = 0; i < MAX; i++) huespedes[i] = nullptr;
-
+        
     }
 
 
     Hotel(string nombre, string direccion, int numCuartos, int numEmpleados, int numHuespedes, Cuarto* cuartosSet[])
         : nombre(nombre), direccion(direccion), contCuartos(0), contEmpleados(0), contHuespedes(0), 
         numCuartos(numCuartos), numEmpleados(numEmpleados), numHuespedes(numHuespedes)
-    {
+    {   
         for (int i = 0; i < numCuartos; i++) cuartos[i] = cuartosSet[i];
         for (int i = 0; i < numEmpleados; i++) empleados[i] = nullptr;
         for (int i = 0; i < numHuespedes; i++) huespedes[i] = nullptr;
     }
 
     // Getters
-    string getNombre() const {
+    string getNombre()  {
         return nombre;
     }
 
-    string getDireccion() const {
+    string getDireccion()  {
         return direccion;
     }
 
