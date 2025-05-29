@@ -46,7 +46,7 @@ public:
     }
 
     void mostrarInfo(){
-        cout <<  "Mi nombre es"  << nombre << ", mi correo es " << correo << " y mi telefono es: " << telefono << endl;
+        cout <<  "Mi nombre es "  << nombre << ", mi correo es " << correo << " y mi telefono es: " << telefono << endl;
     }
 
 };

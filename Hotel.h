@@ -9,42 +9,60 @@ using namespace std;
 
 class Hotel {
 private:
+    static const int MAX = 100;
     string nombre;
     string direccion;
+    int numCuartos,numEmpleados,numHuespedes;
+    int contCuartos,contEmpleados,contHuespedes;
     //tamaño de los arreglos, y los arreglos de apuntadores para todo
-    int numCuartos;
-    int numEmpleados;
-    int numHuespedes;
-    Cuarto** cuartos;      
-    Empleado** empleados;  
-    Huesped** huespedes;   
+    Cuarto* cuartos[MAX];      
+    Empleado* empleados[MAX];  
+    Huesped* huespedes[MAX];   
 
 public:
     Hotel()
-        : nombre(""), direccion(""), numCuartos(100), numEmpleados(100), numHuespedes(100)
+        : nombre(""), direccion(""), numCuartos(100), numEmpleados(100), numHuespedes(100), contCuartos(0), contEmpleados(0), contHuespedes(0)
     {
-        cuartos = new Cuarto*[numCuartos];
-        empleados = new Empleado*[numEmpleados];
-        huespedes = new Huesped*[numHuespedes];
-        for (int i = 0; i < numCuartos; i++) cuartos[i] = nullptr;
+        for (int i = 0; i < MAX; i++) cuartos[i] = nullptr;
+        for (int i = 0; i < MAX; i++) empleados[i] = nullptr;
+        for (int i = 0; i < MAX; i++) huespedes[i] = nullptr;
+
+    }
+
+
+    Hotel(string nombre, string direccion, int numCuartos, int numEmpleados, int numHuespedes, Cuarto* cuartosSet[])
+        : nombre(nombre), direccion(direccion), contCuartos(0), contEmpleados(0), contHuespedes(0), 
+        numCuartos(numCuartos), numEmpleados(numEmpleados), numHuespedes(numHuespedes)
+    {
+        for (int i = 0; i < numCuartos; i++) cuartos[i] = cuartosSet[i];
         for (int i = 0; i < numEmpleados; i++) empleados[i] = nullptr;
         for (int i = 0; i < numHuespedes; i++) huespedes[i] = nullptr;
     }
 
+    // Getters
+    string getNombre() const {
+        return nombre;
+    }
 
-    Hotel(string nombre, string direccion, int numCuartos, int numEmpleados, int numHuespedes)
-        : nombre(nombre), direccion(direccion), numCuartos(numCuartos), numEmpleados(numEmpleados), numHuespedes(numHuespedes)
-    {
-        cuartos = new Cuarto*[numCuartos];
-        empleados = new Empleado*[numEmpleados];
-        huespedes = new Huesped*[numHuespedes];
-        for (int i = 0; i < numCuartos; ++i) cuartos[i] = nullptr;
-        for (int i = 0; i < numEmpleados; ++i) empleados[i] = nullptr;
-        for (int i = 0; i < numHuespedes; ++i) huespedes[i] = nullptr;
+    string getDireccion() const {
+        return direccion;
+    }
+
+    Cuarto** getCuartos() {
+        return cuartos;
+    }
+
+    Empleado** getEmpleados() {
+        return empleados;
+    }
+
+    Huesped** getHuespedes() {
+        return huespedes;
     }
 
     void alquilarCuarto(Huesped* huesped, int numeroCuarto){
-        if(cobrar(huesped, numeroCuarto)){
+
+        if((numeroCuarto < numCuartos) && (huesped, numeroCuarto)){
             // si se cobro con exito, agregamos huesped a sistema
             // y cuarto ya no esta disponible
             huespedes[numeroCuarto] = huesped;
@@ -55,9 +73,6 @@ public:
         }
     }   
 
-    
-
-
 
     // asumiendo que esta disponible, cobrar al huesped, true si exitoso falso si no
     bool cobrar(Huesped* huesped, int numeroCuarto){
@@ -65,7 +80,6 @@ public:
         if( (cuartos[numeroCuarto]!= nullptr) && cuartos[numeroCuarto]->estaDisponible()){
             // cobrar al huesped da bool si se cobro exitosamente
             if( huesped->cobrar(cuartos[numeroCuarto]->getTarifa()) ) {
-                
                 cout << "Cobro exitosamente" << endl;
                 return true;
             }
@@ -74,7 +88,7 @@ public:
                 return false;
             }
         }
-        else if (cuartos[numeroCuarto]!= nullptr) {
+        else if (cuartos[numeroCuarto]== nullptr) {
             cout << "Cuarto no existe para cobrar" << endl;
             return false;
         }
@@ -89,13 +103,11 @@ public:
     //checar si hay espacio, y agregar en el primer espacio disponible
     // si esta lleno imprimir error
     void agregarEmpleado(Empleado* empleado) {
-        for (int i = 0; i < numEmpleados; i++) {
-            if (empleados[i] == nullptr) {
-                empleados[i] = empleado;
-                return;
-            }
-        }
+        if(contEmpleados < numHuespedes){
+            empleados[contEmpleados++] = empleado;
+        }else{
         cout << "No hay espacio para más empleados." << endl;
+        }
     }
 
     //usando ID encontramos y borramos el empleado
@@ -111,15 +123,25 @@ public:
     }
 
     void registrarHuesped(Huesped* huesped) {
+        if(contHuespedes < numHuespedes){
+            huespedes[contHuespedes++] = huesped;
+        }else{
+        cout << "No hay espacio para más huéspedes." << endl;
+        }
+    }
+    
+    void eliminarHuesped(string correo){
         for (int i = 0; i < numHuespedes; i++) {
-            if (huespedes[i] == nullptr) {
-                huespedes[i] = huesped;
+            if (huespedes[i] != nullptr && huespedes[i]->getCorreo() == correo) {
+                delete huespedes[i];
+                huespedes[i] = nullptr;
                 return;
             }
         }
-        cout << "No hay espacio para más huéspedes." << endl;
+        cout << "Huesped no encontrado." << endl;
     }
-    
+
+
     void muestraHotel() { 
         cout << "Hotel: " << nombre << endl;
         cout << "Dirección: " << direccion << endl;
