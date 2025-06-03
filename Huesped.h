@@ -31,6 +31,22 @@ public:
     
     double getDinero(){
         return dinero;
+    }  
+
+    void setNombre(string nombre){
+        this->nombre = nombre;
+    }
+
+    void setCorreo(string correo){
+        this->correo = correo;
+    }
+
+    void setTelefono(string telefono){
+        this->telefono = telefono;
+    }
+
+    void setDinero(double dinero){
+        this->dinero = dinero;
     }
 
     bool cobrar(double tarifa){

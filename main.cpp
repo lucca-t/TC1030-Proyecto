@@ -40,8 +40,8 @@ int main() {
 
     // Info del hotel y empleados
     hotel->muestraHotel();
-    cout << "------------" << endl;
-    cout << "    Empleados     " << endl;
+    cout << "       ------------" << endl;
+    cout << "       Empleados     " << endl;
     for (int i = 0; i < 10; i++) {
         if (hotel->getEmpleados()[i]) hotel->getEmpleados()[i]->mostrarInfo();
     }

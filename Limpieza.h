@@ -15,7 +15,9 @@ public:
         this -> suministros = 10;
     }
 
-    int getNumLimpiados(){return cuartosLimpiados;}
+    int getNumLimpiados(){
+        return cuartosLimpiados;
+    }
 
     int getSuministros(){
         return suministros;
