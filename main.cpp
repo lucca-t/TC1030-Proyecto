@@ -1,7 +1,7 @@
 #include "Hotel.h"
 #include "Recepcionista.h"
 #include "Limpieza.h"
-#include "Cuarto.h"
+#include "Cuarto.h" 
 #include "Huesped.h"
 #include <iostream>
 using namespace std;
@@ -30,10 +30,7 @@ int main() {
     // Hotel
     Hotel* hotel = new Hotel("Fiesta Inn", "Consituyentes 4, Qro 76695", 10, 10, 10, cuartos);
 
-    // Meter cuartos al hotel
-    for (int i = 0; i < 10; i++) {
-        hotel->getCuartos()[i] = cuartos[i];
-    }
+
 
     // Agregar empleados
     hotel->agregarEmpleado(recep1);
@@ -43,8 +40,8 @@ int main() {
 
     // Info del hotel y empleados
     hotel->muestraHotel();
-    cout << "------------" << endl;
-    cout << "    Empleados     " << endl;
+    cout << "       ------------" << endl;
+    cout << "       Empleados     " << endl;
     for (int i = 0; i < 10; i++) {
         if (hotel->getEmpleados()[i]) hotel->getEmpleados()[i]->mostrarInfo();
     }

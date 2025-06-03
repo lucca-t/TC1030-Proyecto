@@ -49,6 +49,14 @@ public:
     void setTarifa(double tarifa){
         this -> tarifa = tarifa;
     }   
+    
+    void setTipo(string tip){
+        this -> tipo = tip;
+    }
+    
+    void setNumero(int num){
+        this -> numero = num;
+    }
 
     void mostrarInfo(){
         cout << "Número de cuarto: " << numero;
