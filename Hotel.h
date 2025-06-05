@@ -65,8 +65,16 @@ public:
         if((numeroCuarto < numCuartos) && (huesped, numeroCuarto)){
             // si se cobro con exito, agregamos huesped a sistema
             // y cuarto ya no esta disponible
-            huespedes[numeroCuarto] = huesped;
-            cuartos[numeroCuarto]->ocupar();
+            if(cobrar(huesped, numeroCuarto) ){
+                cout << "Cuarto ocupado exitosamente" << endl;
+                huespedes[numeroCuarto] = huesped;
+                cuartos[numeroCuarto]->ocupar();
+            }
+            else{
+                cout << "No se pudo cobrar al huesped" << endl;
+                return; // si no se pudo cobrar no se ocupa el cuarto
+            }
+            
         }
         else{
             cout << "Operación fracasó" << endl;
@@ -140,7 +148,15 @@ public:
         }
         cout << "Huesped no encontrado." << endl;
     }
-
+    //checar si huesped ya esta registrado
+    bool huespedRegistrado(Huesped* huesped) {
+    for (int i = 0; i < numHuespedes; i++) {
+        if (huespedes[i] != nullptr && huespedes[i]->getCorreo() == huesped->getCorreo()) {
+            return true;
+        }
+    }
+    return false;
+}
 
     void muestraHotel() { 
         cout << "Hotel: " << nombre << endl;

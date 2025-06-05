@@ -12,10 +12,11 @@ private:
     double tarifa;
     bool disponible;
 public:
+    //constructores
     Cuarto(): numero(0), tipo(""), tarifa(0.0), disponible(true){}
-
+    //sobrecarga 
     Cuarto(int numero, string tipo, double tarifa): numero(numero), tipo(tipo), tarifa(tarifa), disponible(true){}
-
+    //modificadores de acceso
     bool estaDisponible(){
         return disponible;
     }
@@ -30,6 +31,18 @@ public:
     
     double getTarifa(){
         return tarifa;
+    }
+    
+    void setTarifa(double tarifa){
+        this -> tarifa = tarifa;
+    }   
+    
+    void setTipo(string tip){
+        this -> tipo = tip;
+    }
+    
+    void setNumero(int num){
+        this -> numero = num;
     }
 
     bool ocupar(){
@@ -46,17 +59,7 @@ public:
         this -> disponible = true;
     }
 
-    void setTarifa(double tarifa){
-        this -> tarifa = tarifa;
-    }   
-    
-    void setTipo(string tip){
-        this -> tipo = tip;
-    }
-    
-    void setNumero(int num){
-        this -> numero = num;
-    }
+
 
     void mostrarInfo(){
         cout << "Número de cuarto: " << numero;

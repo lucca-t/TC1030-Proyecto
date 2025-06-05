@@ -14,7 +14,7 @@ int main() {
     Limpieza* limp2 = new Limpieza(4, "Pedro");
 
     // Huespedes
-    Huesped* guest1 = new Huesped("Carlos", "carlos@hotmail.com", "444-1111", 1000.0);
+    Huesped* guest1 = new Huesped("Carlos", "carlos@hotmail.com", "444-1111", 50000.0);
     Huesped* guest2 = new Huesped("Elena", "elena@hotmail.com", "442-2222", 50.0); // poco dinero para probar
 
     // Cuartos
@@ -38,12 +38,17 @@ int main() {
     hotel->agregarEmpleado(limp1);
     hotel->agregarEmpleado(limp2);
 
-    // Info del hotel y empleados
+    // Info del hotel y empleados y polimorfismo
     hotel->muestraHotel();
     cout << "       ------------" << endl;
     cout << "       Empleados     " << endl;
     for (int i = 0; i < 10; i++) {
-        if (hotel->getEmpleados()[i]) hotel->getEmpleados()[i]->mostrarInfo();
+        if (hotel->getEmpleados()[i]) {
+
+            hotel->getEmpleados()[i]->mostrarInfo();
+            hotel->getEmpleados()[i]->trabajar(); // Simular trabajo
+            cout << "Rol: " << hotel->getEmpleados()[i]->obtenerRol() << endl;
+        }
     }
 
     // Cuartos
@@ -54,12 +59,13 @@ int main() {
     }
 
     // Registrar huéspedes (todavía sin cuarto)
-    hotel->registrarHuesped(guest1);
-    hotel->registrarHuesped(guest2);
+    //hotel->registrarHuesped(guest1);
+    //hotel->registrarHuesped(guest2);
 
     // Carlos renta el cuarto 2 (debe funcionar)
     cout << "Carlos intenta rentar el cuarto 2:" << endl;
     hotel->alquilarCuarto(guest1, 2);
+
 
     // Elena intenta rentar el cuarto 2 (ya ocupado)
     cout << "Elena intenta rentar el cuarto 2 (ya ocupado):" << endl;
@@ -70,7 +76,7 @@ int main() {
     hotel->alquilarCuarto(guest2, 3);
 
     // Ahora sí le alcanza a Elena
-    guest2->cobrar(-200); // Le damos dinero
+    guest2->setDinero(10000); // Le damos dinero
     cout << "Elena intenta rentar el cuarto 1 (ahora sí tiene dinero):" << endl;
     hotel->alquilarCuarto(guest2, 1);
 
@@ -84,17 +90,10 @@ int main() {
     cout << "Eliminando empleado con ID 2 (Luis):" << endl;
     hotel->eliminarEmpleado(2);
 
-    cout << "Eliminando huésped con correo elena@mail.com:" << endl;
-    hotel->eliminarHuesped("elena@mail.com");
+    cout << "Eliminando huésped con correo elena@hotmail.com:" << endl;
+    hotel->eliminarHuesped("elena@hotmail.com");
 
-    // Probar métodos de empleados (herencia/polimorfismo)
-    cout << "--- Prueba de métodos de empleados (polimorfismo) ---" << endl;
-    Empleado* empleadosPrueba[2] = {recep1, limp1};
-    for (int i = 0; i < 2; i++) {
-        empleadosPrueba[i]->trabajar();
-        empleadosPrueba[i]->mostrarInfo();
-        cout << "Rol: " << empleadosPrueba[i]->obtenerRol() << endl;
-    }
+
 
     // Probar alquilar cuarto fuera de rango
     cout << "Intentando alquilar cuarto fuera de rango:" << endl;
