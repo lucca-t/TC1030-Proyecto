@@ -5,8 +5,7 @@
 #include <iostream>
 using namespace std;
 
-class Recepcionista : public Empleado
-{
+class Recepcionista : public Empleado{
 private:
     int llamadasAtendidas;
     int reservacionesHechas;
