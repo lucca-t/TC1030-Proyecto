@@ -8,8 +8,8 @@ Cada Cuarto contiene datos específicos y mantiene una referencia al huésped qu
 La clase Huesped almacena los datos personales de los clientes.
 Empleado es una clase abstracta que sirve como base para las subclases Recepcionista y Limpieza, las cuales implementan comportamientos específicos, demostrando el uso de herencia y polimorfismo.
 
-El proyecto podría fallar al acceder a posiciones inválidas en los arreglos, como buscar una habitación o un huésped que no existe. También puede ocurrir un fallo si no se inicializan correctamente los atributos en los constructores, causando comportamientos inesperados. Además, la falta de validación en operaciones como eliminar empleados o registrar huéspedes puede hacer que el programa se detenga.
+El proyecto podría fallar al acceder a posiciones inválidas en los arreglos, como buscar una habitación o un huésped que no existe. También puede ocurrir un fallo si no se inicializan correctamente los atributos en los constructores, causando comportamientos inesperados. 
 
-compilar con: "g++ Empleado.h Limpieza.h Recepcionista.h main.cpp"
+compilar con: "g++ Empleado.h Limpieza.h Recepcionista.h Cuarto.h Hotel.h Huesped.h main.cpp"
 
-correr en windows: "a.exe"
+correr en windows: ".\a.exe"
