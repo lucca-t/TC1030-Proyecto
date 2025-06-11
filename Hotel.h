@@ -60,6 +60,19 @@ public:
         return huespedes;
     }
 
+    int getNumCuartos() {
+        return numCuartos;
+    }
+
+    int getNumEmpleados() {
+        return numEmpleados;
+    }
+
+    int getNumHuespedes() {
+        return numHuespedes;
+    }
+
+    
     void alquilarCuarto(Huesped* huesped, int numeroCuarto){
 
         if((numeroCuarto < numCuartos) && (huesped, numeroCuarto)){
@@ -164,6 +177,21 @@ public:
         cout << "Número de cuartos: " << numCuartos << endl;
         cout << "Número de empleados: " << numEmpleados << endl;
         cout << "Número de huéspedes: " << numHuespedes << endl;
+        cout << "Lista de cuartos:" << endl;
+        for (int i = 0; i < numCuartos; i++) {
+            if (cuartos[i] != nullptr) {
+                cout << "  Cuarto #" << i << ": ";
+                cout << "Tipo: " << cuartos[i]->getTipo() << ", ";
+                cout << "Tarifa: $" << cuartos[i]->getTarifa() << ", ";
+                cout << "Ocupado: " << (cuartos[i]->estaDisponible() ? "No" : "Sí") << endl;
+            }
+        }
+        cout << "Lista de empleados:" << endl;
+        for (int i = 0; i < numEmpleados; i++) {
+            if (empleados[i] != nullptr) {
+                empleados[i]->mostrarInfo();
+            }
+        }
     }
 };
 
