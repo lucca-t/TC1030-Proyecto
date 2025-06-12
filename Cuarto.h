@@ -1,3 +1,15 @@
+/*
+ *
+ * Proyecto Hotel clase Cuarto
+ * Lucca Traslosheros Abascal
+ * A01713944
+ * 11/6/2025
+ * version: 1
+ * Esta clase define el objeto Cuarto, que representa un cuarto de hotel con sus atributos
+ * principales como número, tipo, tarifa y disponibilidad. Incluye métodos para modificar y
+ * consultar el estado del cuarto.
+ */
+
 #ifndef CUARTO_H
 #define CUARTO_H
 
@@ -5,69 +17,73 @@
 #include <iostream>
 using namespace std;
 
-class Cuarto{
+// Declaración de la clase Cuarto
+class Cuarto {
 private:
+    // Variables de instancia privadas
     int numero;
     string tipo;
     double tarifa;
     bool disponible;
+
 public:
-    //constructores
-    Cuarto(): numero(0), tipo(""), tarifa(0.0), disponible(true){}
-    //sobrecarga 
-    Cuarto(int numero, string tipo, double tarifa): numero(numero), tipo(tipo), tarifa(tarifa), disponible(true){}
-    //modificadores de acceso
-    bool estaDisponible(){
+    // Constructores
+    Cuarto(): numero(0), tipo(""), tarifa(0.0), disponible(true) {}
+    Cuarto(int numero, string tipo, double tarifa): numero(numero), 
+    tipo(tipo), tarifa(tarifa), disponible(true) {}
+
+    // Métodos de acceso (getters)
+    bool estaDisponible() {
         return disponible;
     }
 
-    int getNumero(){
+    int getNumero() {
         return numero;
     }
 
-    string getTipo(){
+    string getTipo() {
         return tipo;
     }
-    
-    double getTarifa(){
+
+    double getTarifa() {
         return tarifa;
     }
-    
-    void setTarifa(double tarifa){
-        this -> tarifa = tarifa;
-    }   
-    
-    void setTipo(string tip){
-        this -> tipo = tip;
-    }
-    
-    void setNumero(int num){
-        this -> numero = num;
+
+    // Métodos modificadores (setters)
+    void setTarifa(double tarifa) {
+        this->tarifa = tarifa;
     }
 
-    bool ocupar(){
-        //returns true si fue ocupado exitosamente y falso si no
-        if(disponible){
+    void setTipo(string tip) {
+        this->tipo = tip;
+    }
+
+    void setNumero(int num) {
+        this->numero = num;
+    }
+
+    // Ocupar cuarto
+    bool ocupar() {
+        if (disponible) {
             disponible = false;
             return true;
-        }
-        else
+        } else
             return false;
     }
 
-    void liberar(){
-        this -> disponible = true;
+    // liberar cuarto
+    void liberar() {
+        disponible = true;
     }
 
-
-
-    void mostrarInfo(){
-        cout << "Número de cuarto: " << numero;
+    // Método para mostrar información del cuarto
+    void mostrarInfo() {
+        cout << "Cuarto # : " << numero;
         cout << "  Tipo de cuarto: " << tipo;
         cout << "  Tarifa: $" << tarifa;
-        cout << "  Disponible: " << disponible << endl;
+        // Mostrar si está disponible o no
+        cout << "  Disponible: " << (disponible ? "Sí" : "No") << endl;
     }
-    
 };
 
 #endif

@@ -1,15 +1,73 @@
-# TC1030-Proyecto
+# TC1030-Proyecto: Sistema de Gestión de Hotel
 
-Este proyecto modela un sistema para la gestión de un hotel mediante una estructura de clases que representa sus elementos principales:
-Hotel, Cuarto, Huesped y Empleado. 
-La clase Hotel administra la información de las habitaciones, los huéspedes y el personal. El hotel contiene las habitaciones como composición, y los huespedes y personal como agregación.
+## Autor
+Lucca Traslosheros Abascal  
+A01713944  
+11/6/2025
 
-Cada Cuarto contiene datos específicos y mantiene una referencia al huésped que lo ocupa. 
-La clase Huesped almacena los datos personales de los clientes.
-Empleado es una clase abstracta que sirve como base para las subclases Recepcionista y Limpieza, las cuales implementan comportamientos específicos, demostrando el uso de herencia y polimorfismo.
+---
 
-El proyecto podría fallar al acceder a posiciones inválidas en los arreglos, como buscar una habitación o un huésped que no existe. También puede ocurrir un fallo si no se inicializan correctamente los atributos en los constructores, causando comportamientos inesperados. 
+## Descripción
 
-compilar con: "g++ Empleado.h Limpieza.h Recepcionista.h Cuarto.h Hotel.h Huesped.h main.cpp"
+Este proyecto es una aplicación de consola en C++ que modela la gestión de un hotel. Permite crear, eliminar y manipular empleados, huéspedes y cuartos, así como asignar huéspedes a cuartos y mostrar información relevante del hotel. El sistema implementa conceptos fundamentales de la programación orientada a objetos como herencia, polimorfismo, clases abstractas, sobrecarga y sobreescritura de métodos, y modificadores de acceso.
 
-correr en windows: ".\a.exe"
+---
+
+## Estructura del Proyecto
+
+- **Hotel:** Clase principal que administra cuartos, empleados y huéspedes.
+- **Cuarto:** Representa un cuarto del hotel, con atributos como número, tipo, tarifa y disponibilidad.
+- **Empleado (abstracta):** Clase base para empleados, con métodos virtuales puros. 
+                            No se puede crear objeto de empleado y los metodos virtuales tienen un =0
+  - **Recepcionista:** Hereda de Empleado, maneja llamadas y reservaciones.
+  - **Limpieza:** Hereda de Empleado, maneja cuartos limpiados y suministros.
+- **Huesped:** Representa a un huésped, con atributos como nombre, correo, teléfono y dinero disponible.
+
+---
+
+## Instalación y Ejecución
+
+Compilar con: "g++ Empleado.h Limpieza.h Recepcionista.h Cuarto.h Hotel.h Huesped.h main.cpp"
+
+Correr en Windows: ".\a.exe"
+
+## Uso
+
+Al iniciar el programa, puedes elegir entre usar un hotel por defecto o crear uno personalizado.  
+El menú principal te permite:
+- Crear empleados o huéspedes
+- Hacer trabajar a un empleado
+- Eliminar empleados o huéspedes
+- Asignar huéspedes a cuartos
+- Eliminar huéspedes de cuartos
+- Mostrar información general del hotel
+- Mostrar información de una persona específica
+
+---
+
+## Casos que pueden hacer que el proyecto deje de funcionar
+
+- **Entradas inválidas:** Si el usuario ingresa letras donde se espera un número, el sistema limpia el buffer y pide la entrada de nuevo, evitando loops infinitos. Puede causar comportamiento inesperado.
+- **Índices fuera de rango:** El sistema valida que los números de cuarto y de empleado estén dentro de los límites permitidos.
+- **Memoria:** Si se eliminan empleados o huéspedes, los punteros se ponen en `nullptr` para evitar accesos inválidos.
+- **Duplicados:** No se permite registrar empleados con el mismo ID ni huéspedes con el mismo correo.
+- **Espacios llenos:** Si se alcanza el máximo de empleados, huéspedes o cuartos, el sistema lo notifica y no permite agregar más.
+
+---
+
+## Conceptos de POO implementados
+
+- **Herencia:** `Recepcionista` y `Limpieza` heredan de `Empleado`.
+- **Clases abstractas:** `Empleado` es abstracta, no se puede crear objeto de Empleado, y define métodos virtuales puros.
+- **Polimorfismo:** Se usan punteros a `Empleado` para manejar diferentes tipos de empleados.
+- **Modificadores de acceso:** Uso de `private`, `protected` y `public` en atributos y métodos.
+- **Sobrecarga y sobreescritura:** Constructores sobrecargados y métodos virtuales sobreescritos en las clases hijas.
+
+---
+
+## Control de versiones
+
+Este proyecto utiliza Git para el control de versiones.  
+Puedes ver el historial de cambios en la pestaña "Commits" de GitHub.
+
+---
