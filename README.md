@@ -71,3 +71,9 @@ Este proyecto utiliza Git para el control de versiones.
 Puedes ver el historial de cambios en la pestaña "Commits" de GitHub.
 
 ---
+
+## UML Visible en los Archivos
+
+[Link a UML dentro del folder](TC1030-UML.pdf)
+
+---
